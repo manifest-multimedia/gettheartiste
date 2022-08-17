@@ -861,12 +861,12 @@ h6 {
 }
 
 .app-sidebar .logo .logo-icon {
-    width: 40px;
+    width: 150px;
     height: 40px;
     font-size: 18px;
     background: url(../../frontend/images/getartist.png) no-repeat;
     background-position: center left;
-    background-size: 40px;
+    background-size: 100%;
     display: block;
     text-decoration: none;
     font-weight: 700;

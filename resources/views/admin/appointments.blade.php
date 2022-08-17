@@ -67,16 +67,22 @@
                                                 <div>{{$appointment->status}}</div>
                                             </div>
                                         </td>
-                                        @if ($appointment->status == 'Pending')
+
                                         <td class="text-right">
+                                            @if ($appointment->status == 'Pending')
                                             <a href="{{ route('appointment-status', $appointment->id)}}" class="btn text-white btn-primary">Approve</a>
+
+                                            @else
+                                            <a href="{{ route('appointment-status', $appointment->id)}}" class="btn text-white btn-secondary">Unapprove</a>
+                                            @endif
+
                                             {{-- <button class="btn btn-icon  btn-hover btn-sm btn-rounded">
                                                 <span class="material-icons btn-danger">
                                                     close
                                                     </span>
                                             </button> --}}
+                                            <a href="{{ route('appointment-status', $appointment->id)}}" class="btn text-white btn-danger">Cancel</a>
                                         </td>
-                                        @endif
                                     </tr>
                                        @endforeach
 

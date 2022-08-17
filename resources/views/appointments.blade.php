@@ -75,6 +75,9 @@
                                                 <i class="anticon anticon-delete"></i>
                                             </button>
                                         </td> --}}
+                                        <td>
+                                            <a href="{{ route('appointment-status', $appointment->id)}}" class="btn text-white btn-primary">Cancel</a>
+                                        </td>
                                     </tr>
                                        @endforeach
 

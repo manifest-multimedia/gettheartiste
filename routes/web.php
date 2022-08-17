@@ -33,6 +33,9 @@ Route::get('receipt/{reference}/{fname}/{lname}/{email}/{phone}/{pass}', [Paymen
 
 
 Route::get('/artiste', [ArtistController::class, 'viewArtistes'])->name('artistes');
+Route::get('/system-user', function(){
+    return view('auth.register2');
+});
 
 Route::middleware(['auth:sanctum'])->group(function (){
 //    Route::get('/booking/{artiste}', function() {return view('auth.register');})->name('booking');

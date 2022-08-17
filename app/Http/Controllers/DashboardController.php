@@ -25,6 +25,7 @@ class DashboardController extends Controller
                     break;
 
                     case "admin":
+                       
                         $appointments = Appointment::get();
                         return view('admin.appointments', compact('appointments'));
                     break;

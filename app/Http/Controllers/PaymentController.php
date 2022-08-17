@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Paystack;
 use App\Models\User;
 use App\Http\Requests;
 use App\Models\Payment;
+use App\Models\TempUser;
 use Illuminate\Http\Request;
+use Laravel\Jetstream\Jetstream;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
-use Laravel\Jetstream\Jetstream;
-use Paystack;
 
 class PaymentController extends Controller
 {
@@ -32,7 +33,13 @@ class PaymentController extends Controller
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
-
+        TempUser::create([
+            'firstname' => $input->firstname,
+            'lastname' => $input->lastname,
+            'email' => $input->email,
+            'phone' => $input->phone,
+            'password' => Hash::make($input['password']),
+        ]);
 
         try{
             return Paystack::getAuthorizationUrl()->redirectNow();
@@ -50,7 +57,35 @@ class PaymentController extends Controller
     {
         $paymentDetails = Paystack::getPaymentData();
 
-        dd($paymentDetails);
+      //  dd($paymentDetails);
+
+        if($paymentDetails['status'] == true && $paymentDetails['message'] == "Verification successful"){
+            $tempUser = TempUser::where('email', $paymentDetails['data']['customer']['email'])->latest()->first();
+          //  dd($tempUser);
+
+           $user = User::create([
+            'firstname' => $tempUser->firstname,
+            'lastname' => $tempUser->lastname,
+            'email' => $tempUser->email,
+            'mobile' => $tempUser->phone,
+            'password' => $tempUser->password,
+            'account_status'=> '0',
+            'user_role' => 'user',
+        ]);
+
+        Payment::create([
+            'user_id' => $user->id,
+            'reference' => $paymentDetails['data']['reference'],
+            'amount' => $paymentDetails['data']['amount'],
+            'requested_amount' => $paymentDetails['data']['requested_amount'],
+            'gateway_response' => $paymentDetails['data']['gateway_response'],
+            'channel' => $paymentDetails['data']['channel'],
+            'currency' => $paymentDetails['data']['currency'],
+            'ip_address' => $paymentDetails['data']['ip_address']
+        ]);
+
+        return redirect()->route('dashboard');
+        }
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want
