@@ -36,6 +36,7 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
+                                            <th>Booked By</th>
                                             <th>Artiste</th>
                                             <th>Date</th>
                                             <th>Time</th>
@@ -51,37 +52,55 @@
                                         <td>
                                             {{$key + 1}}
                                          </td>
+                                        <td>
+                                            {{$appointment->user->firstname}} {{$appointment->user->lastname}}
+                                         </td>
 
-                                         <td>{{$appointment->artiste->name}}</td>
+                                         <td>{{$appointment->artiste->name ?? ""}}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <h6 class="m-b-0">{{$appointment->date}}</h6>
+                                                <h6 class="m-b-0">{{$appointment->date ?? ""}}</h6>
                                             </div>
                                         </td>
 
 
-                                        <td>{{$appointment->time}}</td>
+                                        <td>{{$appointment->time ?? ""}}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <div class="badge badge-secondary badge-dot m-r-10"></div>
-                                                <div>{{$appointment->status}}</div>
+                                                @switch($appointment->status)
+                                                    @case("Unapproved")
+                                                    <span class="badge badge-style-light rounded-pill badge-danger">{{$appointment->status}}</span>
+                                                    @break
+                                                    @case("Approved")
+                                                    <span class="badge badge-style-light rounded-pill badge-success">{{$appointment->status}}</span>
+                                                    @break
+                                                    @case("pending")
+                                                    <span class="badge badge-style-light rounded-pill badge-warning">{{$appointment->status}}</span>
+                                                    @break
+                                                    @default
+                                                    <span class="badge badge-style-light rounded-pill badge-danger">{{$appointment->status}}</span>
+                                                @endswitch
                                             </div>
                                         </td>
 
                                         <td class="text-right">
-                                            @if ($appointment->status == 'Pending')
-                                            <a href="{{ route('appointment-status', $appointment->id)}}" class="btn text-white btn-primary">Approve</a>
-
-                                            @else
-                                            <a href="{{ route('appointment-status', $appointment->id)}}" class="btn text-white btn-secondary">Unapprove</a>
-                                            @endif
-
-                                            {{-- <button class="btn btn-icon  btn-hover btn-sm btn-rounded">
-                                                <span class="material-icons btn-danger">
-                                                    close
-                                                    </span>
-                                            </button> --}}
-                                            <a href="{{ route('appointment-status', $appointment->id)}}" class="btn text-white btn-danger">Cancel</a>
+                                            @switch($appointment->status)
+                                                    @case("Unapproved")
+                                                    <a href="{{ route('appointment-approve', $appointment->id ?? "#")}}" class="btn text-white btn-primary">Approve</a>
+                                                    @break
+                                                    @case("Approved")
+                                                    <a href="{{ route('appointment-cancel', $appointment->id ?? "#")}}" class="btn text-white btn-danger">Cancel</a>
+                                                    @break
+                                                    @case("cancelled")
+                                                    <a href="{{route('appointment-delete', $appointment->id ??
+                                                        '#')}}" class="btn btn-icon btn-hover btn-sm btn-rounded">
+                                                            <i class="anticon anticon-delete"></i>
+                                                        </a>
+                                                    @break
+                                                    @default
+                                                    <span><a href="{{ route('appointment-approve', $appointment->id ?? "#")}}" class="btn text-white btn-primary">Approve</a></span>
+                                                    <span><a href="{{ route('appointment-cancel', $appointment->id ?? "#")}}" class="btn text-white btn-danger">Cancel</a></span>
+                                                @endswitch
                                         </td>
                                     </tr>
                                        @endforeach

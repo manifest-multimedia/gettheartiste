@@ -8,7 +8,7 @@
         <h4 class="auth-description">{{ __('Create your account to book complete your booking') }}</h4>
 
 
-        <x-jet-validation-errors class="mb-4" />
+        <x-validation-errors class="mb-4" />
 
         <div class="row">
             <div class="form-group  col-md-6">

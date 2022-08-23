@@ -8,6 +8,7 @@
         "php": "^7.3|^8.0",
         "ably/ably-php": "^1.1",
         "barryvdh/laravel-dompdf": "^1.0",
+        "cviebrock/eloquent-sluggable": "^8.0",
         "deployer/deployer": "6.8",
         "doctrine/dbal": "^3.1",
         "fideloper/proxy": "^4.4",
@@ -22,6 +23,8 @@
         "monarobase/country-list": "^3.2",
         "princeton255/laravel-notifications-infobip": "^1.2",
         "realrashid/sweet-alert": "^4.1",
+        "spatie/laravel-medialibrary": "^8.0.0",
+        "spatie/laravel-permission": "^5.5",
         "unicodeveloper/laravel-paystack": "1.0.*"
     },
     "require-dev": {

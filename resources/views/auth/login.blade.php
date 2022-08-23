@@ -3,14 +3,14 @@
 
 <p class="auth-description">{{__('Please sign-in to your account.')}}</p>
 
-   
+
 @if (session('status'))
     <div class="mb-4 font-medium text-sm text-green-600">
         {{ session('status') }}
     </div>
 @endif
 <div class="auth-credentials">
-    <x-jet-validation-errors class="mb-4" />
+    <x-validation-errors class="mb-4" />
     <form method='post' action="{{ route('login') }}">
         @csrf
         <div class="form-group">
@@ -27,13 +27,13 @@
                 {{ __('Forgot password?') }}
             </a>
         @endif
-    
+
             <div class="input-affix m-b-10 mt-2">
                 <i class="prefix-icon anticon anticon-lock"></i>
                 <input type="password" class="form-control" id="password" placeholder="{{__('Password')}}" name="password" required autocomplete="current-password">
             </div>
         </div>
-    </div> 
+    </div>
         <div class="form-group">
             <div class="auth-submit">
                 <div class="form-group">
@@ -43,7 +43,7 @@
                     </label>
                 </div>
                 <span class="mt-3 font-size-13 text-muted auth-forgot-password float-end">
-                    {{__("Don't have an account?")}} 
+                    {{__("Don't have an account?")}}
                     <a class="small" href="/register">{{__('Sign up')}}</a>
                 </span>
                 <button class="btn btn-primary mt-2">{{__('Sign In')}}</button>
@@ -54,5 +54,5 @@
 
 
 
-    
+
 </x-neptune-auth-layout>

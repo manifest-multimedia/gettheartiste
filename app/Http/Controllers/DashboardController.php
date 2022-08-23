@@ -25,13 +25,14 @@ class DashboardController extends Controller
                     break;
 
                     case "admin":
-                       
+
                         $appointments = Appointment::get();
                         return view('admin.appointments', compact('appointments'));
                     break;
 
                     case "user":
-                        $appointments = Appointment::get();
+                        $id = Auth::user()->id;
+                        $appointments = Appointment::where('user_id', $id)->get();
                         return view('appointments', compact('appointments'));
                     break;
 

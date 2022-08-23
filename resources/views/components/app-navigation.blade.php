@@ -18,10 +18,13 @@
                <a href="{{ URL::Route('dashboard') }}"><i class="material-icons-two-tone">dashboard</i>Appointments</a>
            </li>
 
+           @can('isAdmin')
            <li>
-               <a href="{{ route('artistes') }}"><i
-                       class="material-icons-two-tone">mic_external_on</i>Artistes</a>
-           </li>
+            <a href="{{ route('artistes') }}"><i
+                    class="material-icons-two-tone">mic_external_on</i>Artistes</a>
+            </li>
+           @endcan
+
 
           {{--  <li>
                <a href="#finance"><i class="material-icons-two-tone"> payments</i>Finance<i

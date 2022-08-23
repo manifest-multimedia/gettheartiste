@@ -38,7 +38,7 @@
             <div class="col-xl-3 col-md-6">
                 <div class="team-member wow fadeInUp delay-0-2s">
                     <div class="image">
-                        <img src="{{asset($artiste->picture)}}" alt="{{$artiste->name}}">
+                        <img src="{{$artiste->getFirstMediaUrl('artiste') ? $artiste->getFirstMedia('artiste')->getUrl('artiste') : asset('avatar.jpg')}}" alt="{{$artiste->name}}">
 
                     </div>
                     <h3>{{$artiste->name}}</h3>

@@ -52,10 +52,10 @@
                                             {{$key + 1}}
                                          </td>
 
-                                         <td>{{$appointment->artiste->name}}</td>
+                                         <td>{{$appointment->artiste->name ?? ""}}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <h6 class="m-b-0">{{$appointment->date}}</h6>
+                                                <h6 class="m-b-0">{{$appointment->date ?? ""}}</h6>
                                             </div>
                                         </td>
 
@@ -64,7 +64,7 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="badge badge-secondary badge-dot m-r-10"></div>
-                                                <div>{{$appointment->status}}</div>
+                                                <div>{{$appointment->status ?? ""}}</div>
                                             </div>
                                         </td>
                                         {{-- <td class="text-right">
@@ -76,7 +76,7 @@
                                             </button>
                                         </td> --}}
                                         <td>
-                                            <a href="{{ route('appointment-status', $appointment->id)}}" class="btn text-white btn-primary">Cancel</a>
+                                            <a href="{{ route('appointment-cancel', $appointment->id ?? "#")}}" class="btn text-white btn-primary">Cancel</a>
                                         </td>
                                     </tr>
                                        @endforeach

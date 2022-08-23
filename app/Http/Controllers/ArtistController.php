@@ -16,37 +16,70 @@ class ArtistController extends Controller
 
     public function viewArtistes(){
         $artiste = Artist::get();
-
-        return view('artiste', compact('artiste'));
+        return view('admin.artiste.view', compact('artiste'));
     }
 
     public function uploadArtiste(Request $request){
-     /*   Validator::make($request->all(), [
-        'name' => ['required', 'string', 'max:255'],
-        'image' => 'required|max:1024',
-    ],[
-        'image.required' => 'You have not uploaded the Artiste image',
-        'image.max' => 'Image size exceeds 1024KB',
-    ]); */
+        $validated = $request->validate([
+            'name' => 'required|max:255|unique:artists,name',
+            'image' => 'required|max:1024',
+        ],
+        $messages = [
+            'required' => 'The :attribute field is required.',
+            'image.required' => 'You have not uploaded the Artiste image',
+            'image.max' => 'Image size exceeds 1024KB',
+        ]
+        );
 
-    $validator = Validator::make($request->all(),[
-        'name' => 'required|max:255',
-    ],
-    $messages = [
-        'required' => 'The :attribute field is required.',
-    ]
-);
+        $artiste =  Artist::create([
+            'name'=> $request->name,
+        ]);
 
-        $data= new Artist();
-
-        if($request->file('image')){
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('artistes'), $filename);
-            $data['picture']= 'artistes/'.$filename;
-            $data['name']= $request->name;
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $artiste->addMedia($file)->toMediaCollection('artiste');
         }
-        $data->save();
+
         return redirect()->route('artistes');
+    }
+
+    public function editArtiste($slug){
+        $artiste = Artist::where('slug', $slug)->first();
+
+
+        return view('admin.artiste.edit', compact('artiste'));
+    }
+
+    public function updateArtiste(Request $request, $slug){
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'image' => 'max:1024',
+        ],
+        $messages = [
+            'required' => 'The :attribute field is required.',
+            'image.required' => 'You have not uploaded the Artiste image',
+            'image.max' => 'Image size exceeds 1024KB',
+        ]
+        );
+
+        $artiste =  Artist::where('slug', $slug)->update([
+            'name'=> $request->name,
+            'about'=> $request->about,
+        ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $artiste->clearMediaCollection('artiste');
+            $artiste->addMedia($file)->toMediaCollection('artiste');
+        }
+
+        return redirect()->route('artistes');
+
+        return view('admin.artiste.edit', compact('artiste'));
+    }
+
+    public function deleteArtiste($slug){
+        Artist::where('slug', $slug)->delete();
+        return redirect()->back()->with('success','Artiste has been deleted');
     }
 }
