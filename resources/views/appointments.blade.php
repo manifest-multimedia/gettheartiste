@@ -35,7 +35,7 @@
                                 <table class="table table-hover e-commerce-table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>No.</th>
                                             <th>Artiste</th>
                                             <th>Date</th>
                                             <th>Time</th>
@@ -62,10 +62,19 @@
 
                                         <td>{{$appointment->time}}</td>
                                         <td>
-                                            <div class="d-flex align-items-center">
-                                                <div class="badge badge-secondary badge-dot m-r-10"></div>
-                                                <div>{{$appointment->status ?? ""}}</div>
-                                            </div>
+                                            @switch($appointment->status)
+                                                    @case("Unapproved")
+                                                    <span class="badge badge-style-light rounded-pill badge-danger">{{$appointment->status}}</span>
+                                                    @break
+                                                    @case("Approved")
+                                                    <span class="badge badge-style-light rounded-pill badge-success">{{$appointment->status}}</span>
+                                                    @break
+                                                    @case("Pending")
+                                                    <span class="badge badge-style-light rounded-pill badge-warning">{{$appointment->status}}</span>
+                                                    @break
+                                                    @default
+                                                    <span class="badge badge-style-light rounded-pill badge-danger">{{$appointment->status}}</span>
+                                                @endswitch
                                         </td>
                                         {{-- <td class="text-right">
                                             <button class="btn btn-icon btn-hover btn-sm btn-rounded pull-right">
@@ -75,9 +84,9 @@
                                                 <i class="anticon anticon-delete"></i>
                                             </button>
                                         </td> --}}
-                                        <td>
+                                        {{-- <td>
                                             <a href="{{ route('appointment-cancel', $appointment->id ?? "#")}}" class="btn text-white btn-primary">Cancel</a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                        @endforeach
 

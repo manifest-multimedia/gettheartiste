@@ -35,7 +35,7 @@
                                 <table class="table table-hover e-commerce-table">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>No.</th>
                                             <th>Booked By</th>
                                             <th>Artiste</th>
                                             <th>Date</th>
@@ -101,6 +101,7 @@
                                                     <span><a href="{{ route('appointment-approve', $appointment->id ?? "#")}}" class="btn text-white btn-primary">Approve</a></span>
                                                     <span><a href="{{ route('appointment-cancel', $appointment->id ?? "#")}}" class="btn text-white btn-danger">Cancel</a></span>
                                                 @endswitch
+                                                {{-- <a href="{{ route('appointment-approve', $appointment->id ?? "#")}}" class="btn text-white btn-primary">Approve</a> --}}
                                         </td>
                                     </tr>
                                        @endforeach

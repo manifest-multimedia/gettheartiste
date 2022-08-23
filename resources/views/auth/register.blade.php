@@ -5,7 +5,7 @@
     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
 
 
-        <h4 class="auth-description">{{ __('Create your account to book complete your booking') }}</h4>
+        <h4 class="auth-description">{{ __('Create an account to book an Artiste') }}</h4>
 
 
         <x-validation-errors class="mb-4" />

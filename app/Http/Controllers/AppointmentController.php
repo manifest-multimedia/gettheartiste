@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Artist;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use App\Mail\MailNotification;
+use App\Mail\AdminNotification;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AppointmentController extends Controller
@@ -19,13 +22,26 @@ class AppointmentController extends Controller
     public function saveAppointment(Request $request, $id){
     //    dd($request);
 
-        Appointment::create([
+        $appoint = Appointment::create([
             'user_id' => Auth::user()->id,
             'artist_id' => $id,
             'date' => $request->appt_date,
             'time' => $request->appt_time,
             'status' => 'Pending',
         ]);
+
+        $data = array(
+            'firstname' => $appoint->user->firstname,
+            'lastname' => $appoint->user->lastname,
+            'artiste' => $appoint->artiste->name,
+            'status' => $appoint->status,
+            'date' => $appoint->date,
+            'time' => $appoint->time,
+        );
+
+        //dd($data);
+        Mail::to('bookings@gettheartiste.com')->send(new AdminNotification($data));
+        Mail::to($appoint->user->email)->send(new MailNotification($data));
 
         return redirect()->route('dashboard');
     }
@@ -36,6 +52,16 @@ class AppointmentController extends Controller
         $appoint->status = 'Approved';
         $appoint->save();
 
+        $data = array(
+            'firstname' => $appoint->user->firstname,
+            'artiste' => $appoint->artiste->name,
+            'status' => $appoint->status,
+            'date' => $appoint->date,
+            'time' => $appoint->time,
+        );
+
+        //dd($data);
+        Mail::to($appoint->user->email)->send(new MailNotification($data));
         return redirect()->route('dashboard')->with('success','Appointment has been approved');
     }
 
@@ -45,14 +71,36 @@ class AppointmentController extends Controller
         $appoint->status = 'Unapprove';
         $appoint->save();
 
+        $data = array(
+            'firstname' => $appoint->user->firstname,
+            'artiste' => $appoint->artiste->name,
+            'status' => $appoint->status,
+            'date' => $appoint->date,
+            'time' => $appoint->time,
+        );
+
+        //dd($data);
+        Mail::to($appoint->user->email)->send(new MailNotification($data));
+
         return redirect()->route('dashboard')->with('success','Appointment has been unapproved');
     }
 
     public function cancelAppointment($id){
         alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.')->showConfirmButton('Confirm', '#3085d6');
         $appoint = Appointment::find($id);
-        $appoint->status = 'cancelled';
+        $appoint->status = 'Cancelled';
         $appoint->save();
+
+        $data = array(
+            'firstname' => $appoint->user->firstname,
+            'artiste' => $appoint->artiste->name,
+            'status' => $appoint->status,
+            'date' => $appoint->date,
+            'time' => $appoint->time,
+        );
+
+        //dd($data);
+        Mail::to($appoint->user->email)->send(new MailNotification($data));
         return redirect()->route('dashboard')->with('success','Appointment has been cancelled');
     }
 
@@ -66,7 +114,7 @@ class AppointmentController extends Controller
     }
 
     public function deleteAppointment($id){
-        Alert::question('Question Title', 'Question Message');
+
         $appoint = Appointment::find($id)->delete();
 
         return redirect()->route('dashboard')->with('success','Appointment has been deleted');;

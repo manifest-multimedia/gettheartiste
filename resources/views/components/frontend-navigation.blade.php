@@ -25,8 +25,16 @@
 
                     <div class="navbar-collapse collapse clearfix" id="main-menu">
                         <ul class="navigation clearfix">
-                            <li class="d-lg-none d-md-none"><a href="{{url('login')}}">Login</a>
-                            {{-- <li class="d-lg-none d-md-none"><a href="{{url('register')}}">Register</a> --}}
+                                @auth
+                                <li class="d-lg-none d-md-none"><a class="text-success" href="{{url('dashboard')}}">Dashboard</a>
+                            @else
+                            <div class="menu-right d-none d-lg-flex align-items-center ml-lg-auto">
+                                <li class="d-lg-none d-md-none"><a class="text-success" href="{{url('login')}}">Login</a>
+                                @if (Route::has('register'))
+                                    <li class="d-lg-none d-md-none"><a class="text-danger" href="{{url('register')}}">Register</a>
+                                @endif
+                            </div>
+                            @endauth
                          </ul>
                     </div>
 
@@ -35,10 +43,17 @@
             </div>
 
             <div class="menu-right d-none d-lg-flex align-items-center ml-lg-auto">
-                <a href="{{URL::Route('login')}}" class="theme-btn style-three mr-1 ml-1">{{__('Login')}} <i class="fas fa-user"></i></a>
-              {{--   <a href="{{URL::Route('register')}}" class="theme-btn style-six mr-1 ml-1">{{__('Get Started')}} <i class="fas fa-arrow-right"></i></a> --}}
-            </div>
+            @auth
+                <a href="{{URL::Route('dashboard')}}" class="btn btn-success style-three mr-1 ml-1 btn-success">{{__('Dashboard')}} <i class="fas fa-user"></i></a>
+            @else
 
+                <a href="{{URL::Route('login')}}" class="btn btn-success style-three mr-1 ml-1 btn-success">{{__('Login')}} <i class="fas fa-user"></i></a>
+                @if (Route::has('register'))
+                    <a href="{{URL::Route('register')}}" class="btn btn-danger">{{__('Register')}} <i class="fas fa-user"></i></a>
+                @endif
+
+            @endauth
+        </div>
         </div>
     </div>
 </div>

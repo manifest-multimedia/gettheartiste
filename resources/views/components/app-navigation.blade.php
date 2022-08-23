@@ -14,8 +14,13 @@
            <li class="sidebar-title">
                NAVIGATION
            </li>
+           @can('isUser')
            <li>
-               <a href="{{ URL::Route('dashboard') }}"><i class="material-icons-two-tone">dashboard</i>Appointments</a>
+            <a href="{{ URL::Route('home') }}"><i class="material-icons-two-tone">alarm_add</i>Book Appointment</a>
+            </li>
+           @endcan
+           <li>
+               <a href="{{ URL::Route('dashboard') }}"><i class="material-icons-two-tone">alarm_on</i>Appointments</a>
            </li>
 
            @can('isAdmin')

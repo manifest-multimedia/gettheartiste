@@ -29,7 +29,7 @@ class PaymentController extends Controller
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required',Password::min(8)->mixedCase()->numbers()->symbols()->uncompromised()],
+            'password' => ['required',Password::min(8)],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
