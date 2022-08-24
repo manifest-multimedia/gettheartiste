@@ -155,20 +155,72 @@
 
         <script src="{{asset('neptune/plugins/apexcharts/apexcharts.min.js')}}"></script>
 
-        {{-- Tawk.To --}}
-        <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/6273f491b0d10b6f3e70c86b/1g2af6n0v';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-    <!--End of Tawk.to Script-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+        <script type="text/javascript">
+
+             $('.delete_confirm').click(function(event) {
+                event.preventDefault();
+            const url = $(this).attr('href');
+                swal({
+                    title: `Are you sure you want to delete this Appointment?`,
+                    text: "If you delete this, it will be gone forever.",
+                    icon: "warning",
+                    buttons: ["Cancel", "Yes!"],
+                    dangerMode: true,
+                }).then(function(value) {
+                    if (value) {
+                        window.location.href = url;
+                    }
+                });
+              });
+
+             $('.cancel_confirm').click(function(event) {
+                event.preventDefault();
+            const url = $(this).attr('href');
+                swal({
+                    title: `Are you sure you want to cancel this Appointment?`,
+                    icon: "warning",
+                    buttons: ["Cancel", "Yes!"],
+                    dangerMode: true,
+                }).then(function(value) {
+                    if (value) {
+                        window.location.href = url;
+                    }
+                });
+              });
+
+             $('.approve_confirm').click(function(event) {
+                event.preventDefault();
+            const url = $(this).attr('href');
+                swal({
+                    title: `Do you want to approve this Appointment?`,
+                    icon: "warning",
+                    buttons: ["Cancel", "Yes!"],
+                    dangerMode: true,
+                }).then(function(value) {
+                    if (value) {
+                        window.location.href = url;
+                    }
+                });
+              });
+
+/*
+              $('.delete-confirm').on('click', function (event) {
+    event.preventDefault();
+    const url = $(this).attr('href');
+    swal({
+        title: 'Are you sure?',
+        text: 'This record and it`s details will be permanantly deleted!',
+        icon: 'warning',
+        buttons: ["Cancel", "Yes!"],
+    }).then(function(value) {
+        if (value) {
+            window.location.href = url;
+        }
+    });
+}); */
+
+        </script>
     </body>
 
 

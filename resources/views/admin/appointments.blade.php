@@ -36,9 +36,9 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Booked By</th>
-                                            <th>Artiste</th>
-                                            <th>Date</th>
+                                            <th style="width:25%">Booked By</th>
+                                            <th style="width:25%">Artiste</th>
+                                            <th style="width:25%">Date</th>
                                             <th>Time</th>
                                             <th>Status</th>
                                             <th></th>
@@ -86,22 +86,32 @@
                                         <td class="text-right">
                                             @switch($appointment->status)
                                                     @case("Unapproved")
-                                                    <a href="{{ route('appointment-approve', $appointment->id ?? "#")}}" class="btn text-white btn-primary">Approve</a>
+                                                    <a href="{{ route('appointment-approve', $appointment->id ?? "#")}}" class="btn text-white btn-primary approve_confirm"><span class="material-icons">
+                                                        check_circle
+                                                        </span></a>
                                                     @break
                                                     @case("Approved")
-                                                    <a href="{{ route('appointment-cancel', $appointment->id ?? "#")}}" class="btn text-white btn-danger">Cancel</a>
+                                                    <a href="{{ route('appointment-cancel', $appointment->id ?? "#")}}" class="btn text-white btn-danger cancel_confirm"><span class="material-icons">
+                                                        cancel
+                                                        </span></a>
                                                     @break
-                                                    @case("cancelled")
+                                                    @case("Cancelled")
                                                     <a href="{{route('appointment-delete', $appointment->id ??
-                                                        '#')}}" class="btn btn-icon btn-hover btn-sm btn-rounded">
-                                                            <i class="anticon anticon-delete"></i>
+                                                        '#')}}" class="btn btn-icon btn-hover btn-sm delete_confirm">
+                                                            <span class="material-icons">
+                                                                delete_forever
+                                                                </span>
                                                         </a>
                                                     @break
                                                     @default
-                                                    <span><a href="{{ route('appointment-approve', $appointment->id ?? "#")}}" class="btn text-white btn-primary">Approve</a></span>
-                                                    <span><a href="{{ route('appointment-cancel', $appointment->id ?? "#")}}" class="btn text-white btn-danger">Cancel</a></span>
+                                                    <span><a href="{{ route('appointment-approve', $appointment->id ?? "#")}}" class="btn text-white btn-primary approve_confirm"><span class="material-icons">
+                                                        check_circle
+                                                        </span></a></span>
+                                                    <span><a href="{{ route('appointment-cancel', $appointment->id ?? "#")}}" class="btn text-white btn-danger cancel_confirm"><span class="material-icons">
+                                                        cancel
+                                                        </span></a></span>
                                                 @endswitch
-                                                {{-- <a href="{{ route('appointment-approve', $appointment->id ?? "#")}}" class="btn text-white btn-primary">Approve</a> --}}
+
                                         </td>
                                     </tr>
                                        @endforeach
