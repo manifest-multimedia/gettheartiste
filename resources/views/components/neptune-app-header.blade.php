@@ -7,6 +7,13 @@
                                     <li class="nav-item">
                                         <a class="nav-link hide-sidebar-toggle-button" href="#"><i class="material-icons">first_page</i></a>
                                     </li>
+
+                                    <li class="nav-item hidden-on-mobile">
+                                        <a class="nav-link text-success" href="https://gettheartiste.com/">BACK TO HOMEPAGE</a>
+                                    </li>
+                                    {{-- <li class="nav-item">
+                                        <a class="nav-link hide-sidebar-toggle-button" href="#"><i class="material-icons">first_page</i></a>
+                                    </li>
                                     <li class="nav-item dropdown hidden-on-mobile">
                                         <a class="nav-link dropdown-toggle" href="#" id="addDropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="material-icons">add</i>
@@ -18,8 +25,8 @@
                                             <li><a class="dropdown-item" href="#">+ New Contact</a></li>
                                             <li><a class="dropdown-item" href="#">+ New Product</a></li>
                                         </ul>
-                                        
-                                    </li>
+
+                                    </li> --}}
                                     {{-- <li class="nav-item dropdown hidden-on-mobile">
                                         <a class="nav-link dropdown-toggle" href="#" id="exploreDropdownLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="material-icons-outlined">explore</i>
@@ -54,7 +61,7 @@
                                         </ul>
                                     </li> --}}
                                 </ul>
-                
+
                             </div>
                             <div class="d-flex">
                                 <ul class="navbar-nav">
@@ -74,12 +81,12 @@
                                         <a class="nav-link language-dropdown-toggle" href="#" id="languageDropDown" data-bs-toggle="dropdown"><img src="{{Auth::user()->profile_photo_url}}" alt=""></a>
                                             <ul class="dropdown-menu dropdown-menu-end language-dropdown" aria-labelledby="languageDropDown">
                                                 {{-- <li><a class="dropdown-item" href="#"><img src="../../assets/images/flags/germany.png" alt="">German</a></li>--}}
-                                                <li><a class="dropdown-item" href="/user/profile">{{__('Profile')}}</a></li> 
+                                                <li><a class="dropdown-item" href="/user/profile">{{__('Profile')}}</a></li>
                                                 <x-logout-link />
                                                 {{-- <li><a class="dropdown-item" href="#"> Logout</a></li>  --}}
                                             </ul>
                                     </li>
-                                 
+
                                 </ul>
                             </div>
                         </div>

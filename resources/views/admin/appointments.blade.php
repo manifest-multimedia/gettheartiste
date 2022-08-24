@@ -74,7 +74,7 @@
                                                     @case("Approved")
                                                     <span class="badge badge-style-light rounded-pill badge-success">{{$appointment->status}}</span>
                                                     @break
-                                                    @case("pending")
+                                                    @case("Pending")
                                                     <span class="badge badge-style-light rounded-pill badge-warning">{{$appointment->status}}</span>
                                                     @break
                                                     @default
