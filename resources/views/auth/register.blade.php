@@ -73,11 +73,11 @@
 
 
         {{-- required --}}
-        <input type="hidden" name="orderID" value="345">
+        <input type="hidden" name="orderID" value="34223323">
         <input type="hidden" name="amount" value="10"> {{-- required in kobo --}}
         <input type="hidden" name="quantity" value="100">
         <input type="hidden" name="currency" value="GHS">
-        <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value']) }}">
+        <input type="hidden" name="metadata" value="{{ json_encode($array = ['invoiceId' => '12345']) }}">
         {{-- For other necessary things you want to add to your payload. it is optional though --}}
 
         <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}

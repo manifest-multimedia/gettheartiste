@@ -24,6 +24,7 @@ class PaymentController extends Controller
      */
     public function redirectToGateway(Request $input)
     {
+       // dd($input);
 
         Validator::make($input->all(), [
             'firstname' => ['required', 'string', 'max:255'],
