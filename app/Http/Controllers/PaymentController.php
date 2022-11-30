@@ -35,6 +35,8 @@ class PaymentController extends Controller
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
+        $input['orderID'] = (int)$input->orderID;
+
         $phone = ($input->phonenumber) ? $input->phonenumber : $input->phone ;
         TempUser::create([
             'firstname' => $input->firstname,
@@ -43,6 +45,8 @@ class PaymentController extends Controller
             'phone' => $phone,
             'password' => Hash::make($input['password']),
         ]);
+
+        dd($input);
 
         try{
             return Paystack::getAuthorizationUrl()->redirectNow();
