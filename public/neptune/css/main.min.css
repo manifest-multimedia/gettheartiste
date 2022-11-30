@@ -610,7 +610,7 @@ h6 {
 .text-dark {
     color: #3f485b !important
 }
- 
+
 .blockquote-footer {
     margin-top: -12px;
     margin-bottom: 12px;
@@ -1236,7 +1236,6 @@ h6 {
         position: relative;
         height: auto
     }
-
     .menu-hover .app-sidebar::before {
         position: fixed;
         top: 0;
@@ -1248,68 +1247,54 @@ h6 {
         box-shadow: 0 0 1.25rem rgba(31, 45, 61, .04);
         z-index: -1
     }
-
     .menu-dark.menu-hover .app-sidebar::before {
         background: #13171f
     }
-
     .menu-hover .app-container {
         display: inline-block;
         margin-left: 0
     }
-
     .menu-hover.sidebar-hidden .app-sidebar {
         transform: none;
         margin-left: -280px
     }
-
     .menu-hover .app-menu {
         overflow: visible !important
     }
-
     .menu-hover .app-menu .accordion-menu {
         overflow-x: visible
     }
-
     .menu-hover .app-menu li {
         position: relative
     }
-
     .menu-hover .app-menu ul>li>a {
         -webkit-transition: padding-right 0s, color .2s ease-in-out, padding-left .2s ease-in-out, filter .2s ease-in-out;
         -moz-transition: padding-right 0s, color .2s ease-in-out, padding-left .2s ease-in-out, filter .2s ease-in-out;
         -o-transition: padding-right 0s, color .2s ease-in-out, padding-left .2s ease-in-out, filter .2s ease-in-out;
         transition: padding-right 0s, color .2s ease-in-out, padding-left .2s ease-in-out, filter .2s ease-in-out
     }
-
     .menu-hover .app-menu ul>li:hover {
         width: calc(100% + 20px)
     }
-
     .menu-hover .app-menu>ul>li:hover>a {
         padding-left: 20px;
         margin-right: 40px;
         color: #2269f5
     }
-
     .menu-dark.menu-hover .app-menu>ul>li:hover>a {
         color: #d3daed
     }
-
     .menu-hover .app-menu ul>li>ul>li:hover>a {
         margin-right: 20px;
         color: #1e1e24;
         font-weight: 500
     }
-
     .menu-dark.menu-hover .app-menu ul>li ul>li:hover>a {
         color: #fff
     }
-
     .app-menu>ul>li:hover>a>i:not(.has-sub-menu).material-icons-two-tone {
         filter: invert(34%) sepia(23%) saturate(3309%) hue-rotate(195deg) brightness(109%) contrast(115%)
     }
-
     .menu-hover .app-menu ul>li>a+.sub-menu {
         display: block !important;
         position: absolute;
@@ -1329,31 +1314,25 @@ h6 {
         -o-transition: all .2s ease-in-out;
         transition: all .2s ease-in-out
     }
-
     .menu-hover.menu-dark .app-menu>ul>li ul {
         background: #1f2433
     }
-
     .menu-hover .app-menu>ul>li>a+.sub-menu {
         top: -40px;
         left: 270px
     }
-
     .menu-hover .app-menu>ul>li>a.active+.sub-menu {
         display: none
     }
-
     .menu-hover .app-menu ul>li:hover>.sub-menu {
         height: auto;
         visibility: visible;
         opacity: 1;
         left: 200px
     }
-
     .menu-hover .app-menu>ul>li:hover>.sub-menu {
         left: 280px
     }
-
     .menu-hover .app-menu ul>li>.sub-menu:after {
         position: absolute;
         top: 20px;
@@ -1365,11 +1344,9 @@ h6 {
         border-top: 7px solid transparent;
         content: ''
     }
-
     .menu-hover.menu-dark .app-menu ul>li>.sub-menu:after {
         border-right-color: #1f2433
     }
-
     .menu-hover .app-menu>ul>li>.sub-menu:after {
         top: 42.5px
     }
@@ -1721,25 +1698,20 @@ h6 {
         -webkit-box-shadow: 0 0 11px 1px rgba(0, 0, 0, .05);
         -moz-box-shadow: 0 0 11px 1px rgba(0, 0, 0, .05)
     }
-
     .app-content .content-menu-toggle {
         display: inline-block
     }
-
     .app-content .content-menu+.content-wrapper {
         width: 100% !important;
         float: none
     }
-
     .content-menu-shown .app-content .content-menu {
         opacity: 1;
         visibility: visible
     }
-
     .app-content .content-menu+.content-wrapper .page-description {
         margin: 0 0 30px !important
     }
-
     .app-content .content-menu li a.active::after {
         left: 0 !important
     }
@@ -1821,7 +1793,6 @@ h6 {
     .page-description.d-flex {
         display: block !important
     }
-
     .page-description .page-description-actions a {
         margin: 20px 0 0
     }
@@ -2350,7 +2321,8 @@ tr.group {
 }
 
 .alert.alert-info {
-    background: rgb(34 197 94);;
+    background: rgb(34 197 94);
+    ;
     color: #fff
 }
 
@@ -2697,7 +2669,8 @@ tr.group {
 }
 
 .badge.badge-info {
-    background: rgb(34 197 94);;
+    background: rgb(34 197 94);
+    ;
     color: #fff
 }
 
@@ -2767,7 +2740,8 @@ tr.group {
 }
 
 .badge.badge-style-bordered.badge-info {
-    border-color: rgb(34 197 94);;
+    border-color: rgb(34 197 94);
+    ;
     color: rgb(34 197 94);
 }
 
@@ -3103,7 +3077,8 @@ a.badge {
 .btn-info.disabled,
 .btn-info:disabled {
     color: #fff;
-    background-color: rgb(34 197 94);;
+    background-color: rgb(34 197 94);
+    ;
     border-color: rgb(34 197 94);
 }
 
@@ -3264,7 +3239,8 @@ a.badge {
 .btn-style-light.btn-info:not(:disabled):not(.disabled).active,
 .btn-style-light.btn-primary:not(:disabled):not(.disabled):active,
 .show>.btn-style-light.btn-primary.dropdown-toggle {
-    color: rgb(34 197 94);;
+    color: rgb(34 197 94);
+    ;
     background-color: #c2dfff
 }
 
@@ -3408,7 +3384,8 @@ a.badge {
 .btn-outline-info,
 .btn-outline-info.disabled,
 .btn-outline-info:disabled {
-    color: rgb(34 197 94);;
+    color: rgb(34 197 94);
+    ;
     background-color: transparent;
     border-color: rgb(34 197 94);
 }
@@ -3425,7 +3402,8 @@ a.badge {
 .btn-outline-info:not(:disabled):not(.disabled):active,
 .show>.btn-outline-info.dropdown-toggle {
     color: #fff;
-    background-color: rgb(34 197 94);;
+    background-color: rgb(34 197 94);
+    ;
     border-color: rgb(34 197 94);
 }
 
@@ -5896,7 +5874,6 @@ span.flatpickr-weekday {
     .mailbox-container {
         height: calc(100vh - 160px)
     }
-
     .mailbox-container>.card {
         height: 100%
     }
@@ -6263,7 +6240,6 @@ span.flatpickr-weekday {
         height: calc(100vh - 160px);
         margin-bottom: 0 !important
     }
-
     .todo-container .row,
     .todo-container .row>div {
         height: 100%
@@ -6533,7 +6509,7 @@ span.flatpickr-weekday {
 
 .app-auth-container {
     height: 100vh;
-    width: 650px;
+    width: 50%;
     background: #fff;
     display: flex;
     justify-content: center;
@@ -6703,7 +6679,6 @@ span.flatpickr-weekday {
         text-align: center;
         padding: 0
     }
-
     .app-error .app-error-background {
         display: none
     }
@@ -6801,23 +6776,19 @@ span.flatpickr-weekday {
         margin-left: 0;
         width: 100%
     }
-
     .app-header {
         left: 330px;
         width: calc(100% - 360px)
     }
-
     .full-width-header .app-header {
         left: 240px;
         width: calc(100% - 240px)
     }
-
     .header-transaprent .app-header {
         left: 280px;
         width: calc(100% - 280px);
         right: auto
     }
-
     .app.sidebar-hidden.header-transaprent .app-sidebar {
         transform: none;
         margin-left: -280px;
@@ -6826,23 +6797,18 @@ span.flatpickr-weekday {
         left: 0;
         margin: 0
     }
-
     .app:not(.sidebar-hidden) .app-sidebar {
         transform: translateX(-280px)
     }
-
     .app.sidebar-hidden .app-sidebar {
         transform: translateX(0)
     }
-
     .app.sidebar-hidden .app-container {
         transform: translateX(280px)
     }
-
     .app.sidebar-hidden {
         overflow: hidden
     }
-
     .app-sidebar .logo {
         position: fixed;
         width: 280px;
@@ -6858,7 +6824,6 @@ span.flatpickr-weekday {
         -webkit-box-shadow: 0 0 11px 1px rgba(0, 0, 0, .05);
         -moz-box-shadow: 0 0 11px 1px rgba(0, 0, 0, .05)
     }
-
     .app.full-width-header .app-sidebar .logo {
         top: 0;
         left: 0;
@@ -6870,24 +6835,19 @@ span.flatpickr-weekday {
         color: #293442;
         box-shadow: none
     }
-
     .app.sidebar-colored .app-sidebar .logo .sidebar-user-switcher .user-info-text,
     .app.sidebar-colored .app-sidebar .logo-icon .logo-text {
         color: #333
     }
-
     .app.sidebar-colored .app-sidebar .logo {
         background-color: #fff
     }
-
     .app-sidebar .app-menu {
         height: 100% !important
     }
-
     .header-transaprent .app-sidebar .app-menu {
         margin-top: -70px
     }
-
     .hide-app-sidebar-mobile {
         visibility: hidden;
         opacity: 0;
@@ -6904,13 +6864,11 @@ span.flatpickr-weekday {
         -o-transition: all .2s ease-in-out;
         transition: all .2s ease-in-out
     }
-
     .sidebar-hidden .hide-app-sidebar-mobile {
         visibility: visible;
         opacity: 1;
         left: 280px
     }
-
     .header-large .app-sidebar .logo {
         top: 0;
         left: 0;
@@ -6921,13 +6879,11 @@ span.flatpickr-weekday {
         border-right: 1px solid #e3e6ea;
         padding: 15px 40.5px
     }
-
     .header-large .app-header {
         width: calc(100% + 60px);
         margin-right: 0;
         left: 0
     }
-
     .header-large .app-header .navbar {
         margin-left: 310px
     }
@@ -6943,7 +6899,6 @@ span.flatpickr-weekday {
     .app-container {
         padding: 10px
     }
-
     .app-sidebar .logo,
     .app.menu-off-canvas .app-sidebar .logo,
     .app.sidebar-hidden .app-sidebar .logo.hidden-sidebar-logo {
@@ -6951,71 +6906,57 @@ span.flatpickr-weekday {
         transform: translateX(290px);
         top: 10px
     }
-
     .app.full-width-header .app-sidebar .logo,
     .app.sidebar-hidden.full-width-header .app-sidebar .logo.hidden-sidebar-logo {
         padding-left: 20px;
         width: 140px;
         padding-right: 20px
     }
-
     .header-large .app-sidebar .logo {
         width: 130px
     }
-
     .app-sidebar .logo .sidebar-user-switcher {
         display: none
     }
-
     .app-header,
     .app.menu-off-canvas .app-header,
     .header-transaprent .app-header {
         left: 120px;
         width: calc(100% - 130px)
     }
-
     .full-width-header .app-header {
         left: 140px;
         width: calc(100% - 140px)
     }
-
     .header-large .app-header {
         margin-top: -10px
     }
-
     .header-large .app-header .navbar {
         margin-left: 130px
     }
-
     .search {
         width: calc(100% - 20px);
         left: 10px;
         right: 10px
     }
-
     .full-width-header.search-visible .search,
     .header-large .search {
         width: 100%;
         left: 0;
         right: 0
     }
-
     .search-visible .search {
         top: 10px
     }
-
     .full-width-header.search-visible .search {
         top: 0
     }
-
     .app-content {
         margin-top: 110px
     }
-
     .mailbox-open-content-email-attachments .attachments-files-list {
         flex-direction: column
     }
-
     .mailbox-open-content-email-attachments .attachments-files-list-item {
         margin-bottom: 10px
     }

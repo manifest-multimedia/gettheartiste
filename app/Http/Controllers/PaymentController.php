@@ -29,15 +29,17 @@ class PaymentController extends Controller
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => 'required|numeric',
             'password' => ['required',Password::min(8)],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
+        $phone = ($input->phonenumber) ? $input->phonenumber : $input->phone ;
         TempUser::create([
             'firstname' => $input->firstname,
             'lastname' => $input->lastname,
             'email' => $input->email,
-            'phone' => $input->phone,
+            'phone' => $phone,
             'password' => Hash::make($input['password']),
         ]);
 

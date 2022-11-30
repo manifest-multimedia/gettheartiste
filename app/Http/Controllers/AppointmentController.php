@@ -14,8 +14,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 class AppointmentController extends Controller
 {
     public function bookAppointment($artiste){
-        $data = Artist::where('name', $artiste)->first();
-       // dd($data);
+        $data = Artist::where('slug', $artiste)->first();
+
         return view('frontend.book', compact('data'));
     }
 
@@ -40,7 +40,7 @@ class AppointmentController extends Controller
         );
 
         //dd($data);
-        Mail::to('bookings@gettheartiste.com')->send(new AdminNotification($data));
+        Mail::to(env('MAIL_TO_ADDRESS'))->send(new AdminNotification($data));
         Mail::to($appoint->user->email)->send(new MailNotification($data));
 
         return redirect()->route('dashboard');

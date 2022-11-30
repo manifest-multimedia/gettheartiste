@@ -35,6 +35,7 @@ class ArtistController extends Controller
             'name'=> $request->name,
         ]);
 
+
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $artiste->addMedia($file)->toMediaCollection('artiste');
@@ -62,10 +63,15 @@ class ArtistController extends Controller
         ]
         );
 
-        $artiste =  Artist::where('slug', $slug)->update([
+     //   dd($slug);
+
+        Artist::where('slug', $slug)->update([
             'name'=> $request->name,
             'about'=> $request->about,
         ]);
+
+
+        $artiste = Artist::where('slug', $slug)->first();
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
