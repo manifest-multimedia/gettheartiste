@@ -46,8 +46,6 @@ class PaymentController extends Controller
             'password' => Hash::make($input['password']),
         ]);
 
-        dd($input);
-
         try{
             return Paystack::getAuthorizationUrl()->redirectNow();
         }catch(\Exception $e) {
