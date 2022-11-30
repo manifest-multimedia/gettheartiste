@@ -8,7 +8,7 @@
 
 
     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
-
+        @csrf
 
         <h4 class="auth-description">{{ __('Create an account to book an Artiste') }}</h4>
 
@@ -84,7 +84,6 @@
 
         {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
 
-        <input type="hidden" name="_token" value="{{ csrf_token() }}"> {{-- employ this in place of csrf_field only in laravel 5.0 --}}
 
         @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
             <div class="mt-4">
