@@ -26,7 +26,7 @@ class DashboardController extends Controller
 
                     case "admin":
 
-                        $appointments = Appointment::get();
+                        $appointments = Appointment::latest()->get();
                         return view('admin.appointments', compact('appointments'));
                     break;
 

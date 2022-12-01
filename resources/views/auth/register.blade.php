@@ -5,15 +5,7 @@
         {{ asset('/neptune/images/backgrounds/enjoy-music.webp') }}
     </x-slot>
 
-    @php
-        do {
-            $orderId = mt_rand(1000000000, 9999999999);
-        } while (
-            DB::table('payments')
-                ->where('reference', $orderId)
-                ->exists()
-        );
-    @endphp
+
 
     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
         @csrf
@@ -78,18 +70,6 @@
                     autocomplete="new-password" />
             </div>
         </div>
-
-
-        {{-- required --}}
-        <input type="hidden" name="orderID" value="{{ $orderId }}">
-        <input type="hidden" name="amount" value="10">
-        <input type="hidden" name="quantity" value="100">
-        <input type="hidden" name="currency" value="GHS">
-        <input type="hidden" name="metadata" value="{{ json_encode($array = ['invoiceId' => $orderId]) }}">
-        {{-- For other necessary things you want to add to your payload. it is optional though --}}
-
-        <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
-
 
         @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
             <div class="mt-4">

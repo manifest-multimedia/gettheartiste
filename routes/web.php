@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\MakePaymentController;
 use App\Notifications\NewAccountSMSNotification;
 
 
@@ -65,12 +66,15 @@ Route::get('language/{locale}', function ($locale) {
 });
 
 // Paystack Payment
-Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+//Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+Route::post('/pay', [MakePaymentController::class, 'make_payment'])->name('pay');
+Route::get('/payment/callback', [MakePaymentController::class, 'payment_callback'])->name('pay.callback');
+
 
 Route::get('/checkout', function(){ return view('payments.checkout');});
 
 // Paystack Payment Callback
-Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
+//Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 
 
 Route::view('/test', 'frontend.test')->name('test');
