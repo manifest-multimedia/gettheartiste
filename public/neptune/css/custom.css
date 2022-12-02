@@ -1,1 +1,9 @@
 /* Your Custom CSS Goes here */
+
+td.text-right {
+    display: flex;
+}
+
+td.text-right a.btn {
+    padding: .375rem .75rem;
+}

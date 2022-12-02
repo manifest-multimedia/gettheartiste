@@ -11,7 +11,7 @@
                     <h1>Appointments</h1>
 
 
-                    <ul class="nav nav-tabs mb-3" id="appointments" role="tablist">
+                    <ul class="mb-3 nav nav-tabs" id="appointments" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="products-tab" data-bs-toggle="tab"
                                 data-bs-target="#products" type="button" role="tab" aria-controls="products"
@@ -26,7 +26,7 @@
                 </div>
 
 
-                <div class="tab-content mt-3 mr-3 ml-3" id="appointments">
+                <div class="mt-3 ml-3 mr-3 tab-content" id="appointments">
                     <div class="tab-pane fade show active" id="products">
                         <div class="row">
                             @if (isset($appointments) && $appointments->count() > 0)
@@ -38,8 +38,9 @@
                                                 <thead>
                                                     <tr>
                                                         <th>No.</th>
-                                                        <th style="width:25%">Booked By</th>
+
                                                         <th style="width:25%">Artiste</th>
+                                                        <th style="width:25%">Booked By</th>
                                                         <th style="width:25%">Date</th>
                                                         <th>Time</th>
                                                         <th>Status</th>
@@ -54,12 +55,13 @@
                                                             <td>
                                                                 {{ $key + 1 }}
                                                             </td>
+                                                            <td>{{ $appointment->artiste->name ?? '' }}</td>
                                                             <td>
                                                                 {{ $appointment->user->firstname }}
                                                                 {{ $appointment->user->lastname }}
                                                             </td>
 
-                                                            <td>{{ $appointment->artiste->name ?? '' }}</td>
+
                                                             <td>
                                                                 <div class="d-flex align-items-center">
                                                                     <h6 class="m-b-0">{{ $appointment->date ?? '' }}
@@ -98,7 +100,7 @@
                                                                 @switch($appointment->status)
                                                                     @case('Unapproved')
                                                                         <a href="{{ route('appointment-approve', $appointment->id ?? '#') }}"
-                                                                            class="btn text-white btn-primary approve_confirm"><span
+                                                                            class="text-white btn btn-primary approve_confirm"><span
                                                                                 class="material-icons">
                                                                                 check_circle
                                                                             </span></a>
@@ -106,7 +108,7 @@
 
                                                                     @case('Approved')
                                                                         <a href="{{ route('appointment-cancel', $appointment->id ?? '#') }}"
-                                                                            class="btn text-white btn-danger cancel_confirm"><span
+                                                                            class="text-white btn btn-danger cancel_confirm"><span
                                                                                 class="material-icons">
                                                                                 cancel
                                                                             </span></a>
@@ -123,12 +125,12 @@
 
                                                                     @default
                                                                         <span><a href="{{ route('appointment-approve', $appointment->id ?? '#') }}"
-                                                                                class="btn text-white btn-primary approve_confirm"><span
+                                                                                class="text-white btn btn-primary approve_confirm"><span
                                                                                     class="material-icons">
                                                                                     check_circle
                                                                                 </span></a></span>
                                                                         <span><a href="{{ route('appointment-cancel', $appointment->id ?? '#') }}"
-                                                                                class="btn text-white btn-danger cancel_confirm"><span
+                                                                                class="text-white btn btn-danger cancel_confirm"><span
                                                                                     class="material-icons">
                                                                                     cancel
                                                                                 </span></a></span>
