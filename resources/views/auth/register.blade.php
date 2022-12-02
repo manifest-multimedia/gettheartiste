@@ -6,13 +6,15 @@
     </x-slot>
 
     @php
-        do {
-            $orderId = mt_rand(1000000000, 9999999999);
-        } while (
-            DB::table('payments')
-                ->where('reference', $orderId)
-                ->exists()
-        );
+        
+        $orderId="";
+        // do {
+        //     $orderId = mt_rand(1000000000, 9999999999);
+        // } while (
+        //     DB::table('payments')
+        //         ->where('reference', $orderId)
+        //         ->exists()
+        // );
     @endphp
 
     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
@@ -88,7 +90,8 @@
         <input type="hidden" name="metadata" value="{{ json_encode($array = ['invoiceId' => $orderId]) }}">
         {{-- For other necessary things you want to add to your payload. it is optional though --}}
 
-        <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
+        {{-- <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> --}}
+         {{-- required --}}
 
 
         @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
