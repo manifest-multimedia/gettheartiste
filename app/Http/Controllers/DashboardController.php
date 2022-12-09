@@ -16,35 +16,10 @@ class DashboardController extends Controller
     {
         if(Gate::any(['isSuperAdmin', 'isAdmin', 'isUser', 'isStaff']))
 
-            {   $role=Auth::user()->user_role;
-
-                switch($role) {
-
-                    case "superadmin":
-                        return view('dashboards.superadmin');
-                    break;
-
-                    case "admin":
-
-                        $appointments = Appointment::latest()->get();
-                        return view('admin.appointments', compact('appointments'));
-                    break;
-
-                    case "user":
-                        $id = Auth::user()->id;
-                        $appointments = Appointment::where('user_id', $id)->get();
-                        return view('appointments', compact('appointments'));
-                    break;
-
-                    case "staff":
-                        return view('dashboards.staff');
-                    break;
-
-                    default:
-
-                    abort(403, 'You are not authorized to access this resource.');
-
-                }
+            {
+                $appointments = Appointment::latest()->get();
+                       // dd($appointments);
+                return view('admin.appointments', compact('appointments'));
             }
 
             else {

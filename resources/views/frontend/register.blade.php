@@ -75,22 +75,16 @@
                     <div class="flex items-center">
                         <x-jet-checkbox name="terms" id="terms" />
 
-                        <div class="ml-2">
-                            {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                        <span style="margin-left: 10px" class="ml-2">
+                            {!! __('I agree to the :terms_of_service', [
                                 'terms_of_service' =>
                                     '<a target="_blank" href="' .
                                     route('terms.show') .
                                     '" class="text-sm text-gray-600 underline hover:text-gray-900">' .
                                     __('Terms of Service') .
                                     '</a>',
-                                'privacy_policy' =>
-                                    '<a target="_blank" href="' .
-                                    route('policy.show') .
-                                    '" class="text-sm text-gray-600 underline hover:text-gray-900">' .
-                                    __('Privacy Policy') .
-                                    '</a>',
                             ]) !!}
-                        </div>
+                        </span>
                     </div>
                 </x-jet-label>
             </div>

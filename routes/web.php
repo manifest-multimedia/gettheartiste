@@ -77,10 +77,11 @@ Route::get('/checkout', function(){ return view('payments.checkout');});
 //Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 
 
+
 Route::view('/test', 'frontend.test')->name('test');
 // Route::view('/', 'auth.login');
 Route::view('/legal', 'terms')->name('legal');
-Route::view('/privacy', 'privacy')->name('privacy');
+//Route::view('/privacy', 'privacy')->name('privacy');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', DashboardController::class)->name('dashboard');
 

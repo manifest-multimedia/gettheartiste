@@ -48,7 +48,7 @@
                                     alt="{{ $artiste->name }}">
 
                             </div>
-                            <h3>{{ $artiste->name }}</h3>
+                            <h3><a href="{{ $profile_link }}/{{ $artiste->slug }}">{{ $artiste->name }}</a></h3>
                             <span><a href="{{ route('booking', $artiste->slug) }}">Book Now</a></span>
                         </div>
                     </div>

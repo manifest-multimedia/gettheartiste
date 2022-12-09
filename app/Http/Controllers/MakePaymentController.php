@@ -24,7 +24,7 @@ class MakePaymentController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => 'required|numeric',
             'password' => ['required',Password::min(8)],
-            // 'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
 
         $phone = ($input->phonenumber) ? $input->phonenumber : $input->phone ;
@@ -37,9 +37,9 @@ class MakePaymentController extends Controller
 
 
         try {
-          
+
             $pay = json_decode($this->initiate_payment($formData));
-           
+
             if($pay->status){
 
                 TempUser::create([
@@ -68,8 +68,8 @@ class MakePaymentController extends Controller
 
     public function payment_callback(Request $request)
     {
-        
-      
+
+
         try {
 
             $reference=$request->reference;
@@ -79,11 +79,11 @@ class MakePaymentController extends Controller
 
                 if ($response->status) {
                     $paymentDetails = $response->data;
-                   
+
                   $customer_email=$paymentDetails->customer->email;
-         
+
                   $tempUser = TempUser::where('payment_ref', $reference)->first();
-    
+
                     $user = User::create([
                         'firstname' => $tempUser->firstname,
                         'lastname' => $tempUser->lastname,
@@ -93,7 +93,7 @@ class MakePaymentController extends Controller
                         'account_status'=> '0',
                         'user_role' => 'user',
                     ]);
-            
+
                     Payment::create([
                         'user_id' => $user->id,
                         'reference' => $paymentDetails->reference,
@@ -104,7 +104,7 @@ class MakePaymentController extends Controller
                         'currency' => $paymentDetails->currency,
                         'ip_address' => $paymentDetails->ip_address
                     ]);
-    
+
                      return redirect('dashboard');
 
                 } else {
@@ -113,24 +113,24 @@ class MakePaymentController extends Controller
 
                     return back()->withError($response->message);
                 }
-          
+
         } catch (\Throwable $th) {
             //throw $th;
             dd("OOps".$th);
             return back()->withError("Something went wrong");
-            
+
         }
 
-       
+
     }
 
     public function initiate_payment($formData)
     {
-    
+
         $url = "https://api.paystack.co/transaction/initialize";
 
         $authorization_token=config("paystack.secretKey");
-       
+
         $fields_string = http_build_query($formData);
         $ch = curl_init();
 
@@ -154,7 +154,7 @@ class MakePaymentController extends Controller
 
     public function verify_payment($reference)
     {
-       
+
         $curl = curl_init();
 
         curl_setopt_array($curl, array(

@@ -11,7 +11,8 @@ class ArtistController extends Controller
 
     public function displayArtistes(){
         $artistes = Artist::get();
-        return view('frontend.artistes', compact('artistes'));
+        $profile_link = url('https://gettheartiste.com/episode');
+        return view('frontend.artistes', compact('artistes', 'profile_link'));
     }
 
     public function viewArtistes(){

@@ -11,27 +11,32 @@
                            class="material-icons-two-tone">supervised_user_circle</i>Administration</a>
                </li>
            @endcan
-           <li class="sidebar-title">
-               NAVIGATION
-           </li>
+           @can('isAdmin')
+               <li class="sidebar-title">
+                   ADMIN NAVIGATION
+               </li>
+           @elsecan('isUser')
+               <li class="sidebar-title">
+                   USER NAVIGATION
+               </li>
+           @endcan
            @can('isUser')
-           <li>
-            <a href="{{ URL::Route('home') }}"><i class="material-icons-two-tone">alarm_add</i>Book Appointment</a>
-            </li>
+               <li>
+                   <a href="{{ URL::Route('home') }}"><i class="material-icons-two-tone">alarm_add</i>Book Appointment</a>
+               </li>
            @endcan
            <li>
                <a href="{{ URL::Route('dashboard') }}"><i class="material-icons-two-tone">alarm_on</i>Appointments</a>
            </li>
 
-           @can('isAdmin')
-           <li>
-            <a href="{{ route('artistes') }}"><i
-                    class="material-icons-two-tone">mic_external_on</i>Artistes</a>
-            </li>
+           @can('isSuperAdmin')
+               <li>
+                   <a href="{{ route('artistes') }}"><i class="material-icons-two-tone">mic_external_on</i>Artistes</a>
+               </li>
            @endcan
 
 
-          {{--  <li>
+           {{--  <li>
                <a href="#finance"><i class="material-icons-two-tone"> payments</i>Finance<i
                        class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
                <ul class="sub-menu" style="">

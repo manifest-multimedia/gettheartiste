@@ -57,8 +57,8 @@
                                                             </td>
                                                             <td>{{ $appointment->artiste->name ?? '' }}</td>
                                                             <td>
-                                                                {{ $appointment->user->firstname }}
-                                                                {{ $appointment->user->lastname }}
+                                                                {{ $appointment->user->firstname ?? '' }}
+                                                                {{ $appointment->user->lastname ?? '' }}
                                                             </td>
 
 
