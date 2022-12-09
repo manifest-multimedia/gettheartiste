@@ -42,6 +42,33 @@
         <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
         <livewire:styles />
 
+        <style>
+            a.menu-text {
+                color: #636872;
+                font-family: "Rubik", Sans-serif;
+                font-size: 15px;
+                font-weight: 400;
+                text-transform: none;
+            }
+
+            li.bk-menu {
+                padding-bottom: 5px !important;
+            }
+
+            a.ml-1.mr-1.btn.btn-success.w-fix-content {
+                display: none;
+            }
+
+            @media only screen and (max-width: 991px) {
+                a.ml-1.mr-1.btn.btn-success.w-fix-content {
+                    display: block;
+                    width: fit-content;
+                    margin-left: 20px !important;
+                    line-height: 22px;
+                }
+            }
+        </style>
+
     </head>
 
     <body>
