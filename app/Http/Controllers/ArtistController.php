@@ -55,6 +55,7 @@ class ArtistController extends Controller
     public function updateArtiste(Request $request, $slug){
         $validated = $request->validate([
             'name' => 'required|max:255',
+            'slug' => 'required',
             'image' => 'max:1024',
         ],
         $messages = [
@@ -64,11 +65,10 @@ class ArtistController extends Controller
         ]
         );
 
-     //   dd($slug);
-
         Artist::where('slug', $slug)->update([
             'name'=> $request->name,
             'about'=> $request->about,
+            'slug'=> $request->slug,
         ]);
 
 
