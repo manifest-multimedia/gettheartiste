@@ -16,7 +16,7 @@ class MakePaymentController extends Controller
 {
     //
 
-    public function make_payment(Request $input)
+    public function confirm_payment(Request $input)
     {
         Validator::make($input->all(), [
             'firstname' => ['required', 'string', 'max:255'],
@@ -35,6 +35,30 @@ class MakePaymentController extends Controller
             'callback_url' => url('payment/callback')
         ];
 
+        return view('frontend.notice', compact('input'));
+
+
+    }
+
+
+    public function make_payment(Request $input)
+    {
+        Validator::make($input->all(), [
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => 'required|numeric',
+            'password' => ['required',Password::min(8)],
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
+        ])->validate();
+
+        $phone = ($input->phonenumber) ? $input->phonenumber : $input->phone ;
+
+        $formData = [
+            'email' => $input->email,
+            'amount' => 10 * 100,
+            'callback_url' => url('payment/callback')
+        ];
 
         try {
 

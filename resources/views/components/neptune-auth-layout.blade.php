@@ -45,11 +45,14 @@
         {{-- Int Tel Input --}}
         <link rel="stylesheet" href="{{ asset('neptune/plugins/intl-tel-input/css/intlTelInput.css') }}">
 
+        {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> --}}
+
+
 
         {{-- Replace background image with artiste picture --}}
         <style>
             .app-auth-lock-screen .app-auth-background {
-                background: url({{ $image }}) no-repeat;
+                background: url({{ $image ?? asset('/neptune/images/backgrounds/enjoy-music.webp')}}) no-repeat;
                 background-size: cover;
                 background-position: center;
             }
@@ -57,6 +60,10 @@
             .iti.iti--allow-dropdown {
                 width: 100%;
             }
+
+           /*  body.swal2-shown.swal2-height-auto {
+                height: 0 !important;
+            } */
         </style>
     </head>
 
@@ -72,6 +79,7 @@
                 {{ $slot }}
             </div>
         </div>
+        @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 
         <!-- Javascripts -->
         <script src="{{ asset('neptune/plugins/jquery/jquery-3.5.1.min.js') }}"></script>
@@ -205,6 +213,8 @@
                 handler.openIframe();
             }
         </script>
+
+
     </body>
 
     </html>

@@ -5,7 +5,7 @@
         {{ asset('/neptune/images/backgrounds/enjoy-music.webp') }}
     </x-slot>
 
-    <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+    <form method="POST" action="{{ route('confirm') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
         @csrf
 
         <h4 class="auth-description">{{ __('Create an account to book an Artiste') }}</h4>
@@ -99,10 +99,9 @@
         </div>
 
         <div class="mt-4 auth-submit">
-            <button type="submit" class="btn btn-primary submit-btn">Proceed to SignUp</button>
+            <button type="submit" class="btn btn-primary submit-btn show_confirm">Proceed to SignUp</button>
         </div>
 
     </form>
-
 
 </x-neptune-auth-layout>

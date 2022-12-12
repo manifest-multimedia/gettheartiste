@@ -67,6 +67,46 @@
                     line-height: 22px;
                 }
             }
+
+            body {
+                height: 100vh;
+            }
+
+            .page-wrapper {
+                height: 100%;
+            }
+
+            footer.footer-section.bg-lighter.rel.z-1 {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+            }
+
+            .notice {
+                max-width: 700px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                margin: auto;
+                height: fit-content;
+            }
+
+            .action-btn {
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            .btn-primary.btn-green {
+                color: #fff;
+                background-color: rgb(34 197 94);
+                border-color: rgb(34 197 94);
+            }
+
+            .action-btn .text-red {
+                color: #ff4857;
+            }
         </style>
 
     </head>
