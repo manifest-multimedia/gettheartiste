@@ -28,8 +28,8 @@ class MailNotification extends Mailable
      */
     public function build()
     {
-        $sender_name= getenv('MAIL_FROM_NAME');
-        $sender_email= getenv('MAIL_FROM_ADDRESS');
+        $sender_name= config("app.name");
+        $sender_email= config("paystack.senderEmail");
         $subject= 'Appointment Booking Status';
 
 

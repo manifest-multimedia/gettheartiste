@@ -35,4 +35,6 @@ return [
      */
     'merchantEmail' => env('MERCHANT_EMAIL'),
 
+    'senderEmail' => env('MAIL_FROM_ADDRESS'),
+
 ];
