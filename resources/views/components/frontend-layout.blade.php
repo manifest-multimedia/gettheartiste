@@ -68,20 +68,20 @@
                 }
             }
 
-            body {
+            /* body {
                 height: 100vh;
-            }
+            } */
 
             .page-wrapper {
                 height: 100%;
             }
 
-            footer.footer-section.bg-lighter.rel.z-1 {
+           /*  footer.footer-section.bg-lighter.rel.z-1 {
                 position: absolute;
                 bottom: 0;
                 width: 100%;
             }
-
+ */
             .notice {
                 max-width: 700px;
                 position: absolute;
